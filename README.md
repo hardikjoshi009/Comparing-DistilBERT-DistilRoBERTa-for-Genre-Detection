@@ -1,55 +1,39 @@
-# Duplicate Question Identification with ML
+# Comparing DistilBERT & DistilRoBERTa for Genre Detection
 
-This project develops a machine learning model to identify duplicate or similar question pairs on Quora. The goal is to automatically detect questions that are semantically similar, aiding in efficiently linking new questions to existing answers.
+This project develops a book genre classification model that categorizes books into 32 genres using only book titles. Unlike traditional models that rely on full text, this approach demonstrates the effectiveness of leveraging concise textual information for genre detection.
 
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
-- [Feature Engineering](#feature-engineering)
-- [Models Used](#models-used)
+- [Model Architecture](#model-architecture)
 - [Results](#results)
 
 ## Overview
 
-The project focuses on detecting pairs of similar questions from Quora using machine learning. Through feature engineering, we extract meaningful insights from the question text, which are then used to train machine learning models. The solution links new or duplicate questions to pre-existing answers, reducing redundancy on platforms like Quora.
+The goal of this project is to compare the performance of DistilBERT and DistilRoBERTa in classifying book genres based solely on their titles. By utilizing pre-trained transformer models, we aim to achieve high accuracy while minimizing computational resources.
 
 ## Features
 
-- **Feature Engineering**: Extracts critical features such as word overlap, cosine similarity, Levenshtein distance, and more.
-- **Machine Learning Models**: Uses three models—Linear Logistic Regression, SVM, and XGBoost.
-- **Evaluation**: Tracks model performance using accuracy metrics on labeled question pairs.
+- **Genre Classification**: Classify books into 32 distinct genres using only titles.
+- **Model Comparison**: Evaluate the performance of DistilBERT and DistilRoBERTa.
+- **Cross-Entropy Loss**: Utilized for loss calculation during training.
+- **Simple Implementation**: Code is structured for easy modification and experimentation.
 
-## Feature Engineering
+## Model Architecture
 
-Feature engineering is crucial for determining the similarity between question pairs. This project involves:
-
-- **Word overlap**: Measures the number of common words between two questions.
-- **Cosine similarity**: Evaluates the cosine of the angle between question vectors.
-- **Levenshtein distance**: Calculates the edit distance between two strings.
-- **TF-IDF and Word Embeddings**: Represents questions using Term Frequency-Inverse Document Frequency and word embeddings to capture semantic similarity.
-
-## Models Used
-
-Three machine learning models were used for training:
-
-1. **Linear Logistic Regression**:
-   - A basic linear model that fits the engineered features to determine if two questions are duplicates.
-   - Achieved an accuracy of **70.36%**.
-   
-2. **Support Vector Machine (SVM)**:
-   - A more complex model that separates similar and dissimilar question pairs using hyperplanes.
-   - Achieved an accuracy of **75.8%**.
-
-3. **XGBoost**:
-   - A gradient boosting model that combines the outputs of weak learners to form a strong prediction model.
-   - Achieved the best performance with an accuracy of **78%**.
+1. **Data Preprocessing**: Tokenization of book titles using the respective tokenizer for each model.
+2. **Model Selection**:
+   - **DistilBERT**: A distilled version of BERT for faster inference and lower resource usage.
+   - **DistilRoBERTa**: A robust variant of DistilBERT, fine-tuned for various NLP tasks.
+3. **Classification Layer**: A fully connected layer for mapping the transformer outputs to the 32 genres.
+4. **Loss Function**: Cross-Entropy Loss for multi-class classification.
 
 ## Results
 
-The following are the accuracy scores achieved with different models on the Quora duplicate question dataset:
+The models were trained and evaluated on a dataset of book titles, achieving the following accuracies:
 
-- **Linear Logistic Regression**: 70.36%
-- **Support Vector Machine (SVM)**: 75.8%
-- **XGBoost**: 78%
+- **DistilBERT (3 epochs)**: 70.23% accuracy
+- **DistilRoBERTa (1 epoch)**: 64.3% accuracy
 
+The results indicate that while both models perform well, DistilBERT outperforms DistilRoBERTa in this specific task when trained for a longer duration.
 
