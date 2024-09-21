@@ -52,6 +52,4 @@ The following are the accuracy scores achieved with different models on the Quor
 - **Support Vector Machine (SVM)**: 75.8%
 - **XGBoost**: 78%
 
----
 
-This README provides an overview of the problem, explains the key steps in feature engineering, and presents the results of the models used.
